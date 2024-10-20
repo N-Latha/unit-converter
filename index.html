@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Unit Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .converter-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .converter {
+            margin-bottom: 30px;
+        }
+        input[type="number"] {
+            width: 120px;
+            padding: 5px;
+        }
+        select, button {
+            padding: 5px;
+            margin-left: 10px;
+        }
+        p {
+            margin-top: 10px;
+        }
+    </style>
+     <script src="script.js"></script>
+</head>
+<body>
+
+<div class="converter-container">
+    <h1>Comprehensive Unit Converter</h1>
+
+    <!-- Length Converter -->
+    <div class="converter">
+        <h3>Length Converter</h3>
+        <input type="number" id="lengthValue" placeholder="Enter value">
+        <select id="lengthUnit">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="miles">Miles</option>
+            <option value="yards">Yards</option>
+            <option value="feet">Feet</option>
+        </select>
+        <button onclick="convertLength()">Convert</button>
+        <p id="lengthResult"></p>
+    </div>
+
+    <!-- Weight Converter -->
+    <div class="converter">
+        <h3>Weight Converter</h3>
+        <input type="number" id="weightValue" placeholder="Enter value">
+        <select id="weightUnit">
+            <option value="grams">Grams</option>
+            <option value="kilograms">Kilograms</option>
+            <option value="pounds">Pounds</option>
+            <option value="ounces">Ounces</option>
+        </select>
+        <button onclick="convertWeight()">Convert</button>
+        <p id="weightResult"></p>
+    </div>
+
+    <!-- Temperature Converter -->
+    <div class="converter">
+        <h3>Temperature Converter</h3>
+        <input type="number" id="temperatureValue" placeholder="Enter value">
+        <select id="temperatureUnit">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select>
+        <button onclick="convertTemperature()">Convert</button>
+        <p id="temperatureResult"></p>
+    </div>
+
+    <!-- Volume Converter -->
+    <div class="converter">
+        <h3>Volume Converter</h3>
+        <input type="number" id="volumeValue" placeholder="Enter value">
+        <select id="volumeUnit">
+            <option value="liters">Liters</option>
+            <option value="milliliters">Milliliters</option>
+            <option value="gallons">Gallons</option>
+            <option value="cups">Cups</option>
+        </select>
+        <button onclick="convertVolume()">Convert</button>
+        <p id="volumeResult"></p>
+    </div>
+
+    <!-- Currency Converter -->
+    <div class="converter">
+        <h3>Currency Converter</h3>
+        <input type="number" id="currencyValue" placeholder="Enter value">
+        <select id="currencyFrom">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="inr">INR</option>
+            <option value="jpy">JPY</option>
+        </select>
+        <select id="currencyTo">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="inr">INR</option>
+            <option value="jpy">JPY</option>
+        </select>
+        <button onclick="convertCurrency()">Convert</button>
+        <p id="currencyResult"></p>
+    </div>
+
+</div>
+
+<script>
+// Length Converter
+function convertLength() {
+    const value = parseFloat(document.getElementById('lengthValue').value);
+    const unit = document.getElementById('lengthUnit').value;
+    let result = "";
+
+    switch(unit) {
+        case 'meters':
+            result = `${value} meters = ${value / 1000} kilometers = ${value * 1.09361} yards = ${value * 3.28084} feet = ${value * 0.000621371} miles`;
+            break;
+        case 'kilometers':
+            result = `${value} kilometers = ${value * 1000} meters = ${value * 1093.61} yards = ${value * 3280.84} feet = ${value * 0.621371} miles`;
+            break;
+        case 'miles':
+            result = `${value} miles = ${value * 1609.34} meters = ${value * 1.60934} kilometers = ${value * 1760} yards = ${value * 5280} feet`;
+            break;
+        case 'yards':
+            result = `${value} yards = ${value * 0.9144} meters = ${value * 0.0009144} kilometers = ${value * 3} feet = ${value * 0.000568182} miles`;
+            break;
+        case 'feet':
+            result = `${value} feet = ${value * 0.3048} meters = ${value * 0.0003048} kilometers = ${value / 3} yards = ${value * 0.000189394} miles`;
+            break;
+    }
+    document.getElementById('lengthResult').innerText = result;
+}
+
+// Weight Converter
+function convertWeight() {
+    const value = parseFloat(document.getElementById('weightValue').value);
+    const unit = document.getElementById('weightUnit').value;
+    let result = "";
+
+    switch(unit) {
+        case 'grams':
+            result = `${value} grams = ${value / 1000} kilograms = ${value * 0.00220462} pounds = ${value * 0.035274} ounces`;
+            break;
+        case 'kilograms':
+            result = `${value} kilograms = ${value * 1000} grams = ${value * 2.20462} pounds = ${value * 35.274} ounces`;
+            break;
+        case 'pounds':
+            result = `${value} pounds = ${value * 453.592} grams = ${value * 0.453592} kilograms = ${value * 16} ounces`;
+            break;
+        case 'ounces':
+            result = `${value} ounces = ${value * 28.3495} grams = ${value * 0.0283495} kilograms = ${value / 16} pounds`;
+            break;
+    }
+    document.getElementById('weightResult').innerText = result;
+}
+
+// Temperature Converter
+function convertTemperature() {
+    const value = parseFloat(document.getElementById('temperatureValue').value);
+    const unit = document.getElementById('temperatureUnit').value;
+    let result = "";
+
+    switch(unit) {
+        case 'celsius':
+            result = `${value}°C = ${(value * 9/5) + 32}°F = ${value + 273.15}K`;
+            break;
+        case 'fahrenheit':
+            result = `${value}°F = ${(value - 32) * 5/9}°C = ${((value - 32) * 5/9) + 273.15}K`;
+            break;
+        case 'kelvin':
+            result = `${value}K = ${value - 273.15}°C = ${((value - 273.15) * 9/5) + 32}°F`;
+            break;
+    }
+    document.getElementById('temperatureResult').innerText = result;
+}
+
+// Volume Converter
+function convertVolume() {
+    const value = parseFloat(document.getElementById('volumeValue').value);
+    const unit = document.getElementById('volumeUnit').value;
+    let result = "";
+
+    switch(unit) {
+        case 'liters':
+            result = `${value} liters = ${value * 1000} milliliters = ${value * 0.264172} gallons = ${value * 4.22675} cups`;
+            break;
+        case 'milliliters':
+            result = `${value} milliliters = ${value / 1000} liters = ${value * 0.000264172} gallons = ${value * 0.00422675} cups`;
+            break;
+        case 'gallons':
+            result = `${value} gallons = ${value * 3.78541} liters = ${value * 
